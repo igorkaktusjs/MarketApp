@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "#BDC1CA",
     justifyContent: "center",
     alignItems: "center",
+    borderRadius: 8
   },
   center: {
     flex: 1,

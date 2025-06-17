@@ -1,8 +1,8 @@
 export const LINE_COLORS = {
-    open: "#4A90E2",
-    high: "#FF9800",
-    low: "#4CAF50",
-    close: "#E91E63",
+    open: "#E8618C",
+    high: "#0A0A7C",
+    low: "#22CCB2",
+    close: "#379AE6",
     
     
   } as const;

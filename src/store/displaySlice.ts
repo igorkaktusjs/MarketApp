@@ -11,8 +11,8 @@ export interface DisplayOptionsState {
 const initialState: DisplayOptionsState = {
   open: true,
   close: true,
-  low: true,
-  high: true,
+  low: false,
+  high: false,
   zoomed: false,
 };
 
