@@ -12,8 +12,8 @@ const VerticalLine = ({
   <SkiaLine
     p1={{ x: x.value, y: chartBounds.top }}
     p2={{ x: x.value, y: chartBounds.bottom }}
-    color="black"
-    strokeWidth={1}
+    strokeWidth={14}
+    color="rgba(0, 0, 0, 0.3)"
   />
 );
 

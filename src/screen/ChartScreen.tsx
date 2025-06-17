@@ -1,6 +1,8 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView, Button } from 'react-native';
+import { StyleSheet, View, ScrollView} from 'react-native';
 import ChartScreenHeader from '../components/ChartScreenHeader/ChartScreenHeader';
+import MarketChart from '../components/MarketChart/MarketChart';
+
 
 const ChartScreen = () => {
   return (
@@ -10,8 +12,9 @@ const ChartScreen = () => {
         showsVerticalScrollIndicator={false}
       >
         <ChartScreenHeader />
-    
-        
+        <View style={styles.section}>
+          <MarketChart />
+        </View>  
       </ScrollView>
     </View>
   );
