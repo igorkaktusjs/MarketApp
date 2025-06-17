@@ -1,7 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView, Text } from 'react-native';
-
-
+import { StyleSheet, View, ScrollView, Button } from 'react-native';
+import ChartScreenHeader from '../components/ChartScreenHeader/ChartScreenHeader';
 
 const ChartScreen = () => {
   return (
@@ -10,7 +9,9 @@ const ChartScreen = () => {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        <View><Text>React native app</Text></View>
+        <ChartScreenHeader />
+    
+        
       </ScrollView>
     </View>
   );
