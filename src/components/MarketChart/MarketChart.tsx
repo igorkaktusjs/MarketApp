@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, ActivityIndicator, Button, Pressable } from "react-native";
-import { CartesianChart, Line, useChartPressState } from "victory-native";
-import { useFont,Canvas, DashPathEffect} from "@shopify/react-native-skia";
+import { CartesianChart, Line, useChartPressState, useLinePath, type PointsArray } from "victory-native";
+import { useFont,Canvas, DashPathEffect, Path} from "@shopify/react-native-skia";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../../store";
 import inter from "../../../assets/Inter.ttf";
@@ -56,6 +56,21 @@ const MarketChart: React.FC = () => {
     );
   }
 
+  
+  function MyCustomLine({
+    points,
+    color,
+    strokeWidth,
+  }: {
+    points: PointsArray;
+    color: string;
+    strokeWidth: number;
+  }) {
+    const { path } = useLinePath(points, { curveType: "cardinal" });
+console.log(path);
+    return <Path path={path} style="stroke" strokeWidth={strokeWidth} color={color} />;
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.legendRow}>
@@ -75,15 +90,12 @@ const MarketChart: React.FC = () => {
             xKey="timestamp"
             yKeys={Object.keys(display).filter(key => key !== 'zoomed') as LineKey[]} // Filter out 'zoomed'
             padding={5}
-            
             axisOptions={{
               font,
               tickCount: { x: 4, y: 4 },
               tickFormatX: (val) => ` ${formatTimestampToDate(Number(val))} `,
               tickFormatY: (val) => `${val.toFixed(8)}`,
             }}
-            
-            
             chartPressState={state}
           >
             {({ points, chartBounds }) => (
@@ -100,11 +112,12 @@ const MarketChart: React.FC = () => {
                   const zoomFactor = zoomed ? 1.5 : 1;
 
                   return (
-                    <Line
+                    <MyCustomLine
                       key={key}
                       points={pointData?.map(p => ({ ...p, y: p.y * zoomFactor + offset })) || []}
                       color={LINE_COLORS[key as LineKey]}
                       strokeWidth={1}
+                      
                     />
                   );
                 })}
